@@ -1,14 +1,17 @@
+
+<script type="text/javascript" src="@routes.Assets.at("js/init.js")"></script>
+
 <nav class="light-blue lighten-1" role="navigation">
     <div class="container">
         <div class="nav-wrapper">
-            <a id="logo-container" href="#" class="brand-logo">
-                TASK
-            </a>
+            <a id="logo-container" href="@routes.TaskController.index()" class="brand-logo">TASK</a>
             <ul id="nav-mobile" class="right side-nav">
-                <li><a href="@routes.Application.index()"><i class="mdi-action-home"></i></a></li>
-                <li><a href="@routes.Task.newTask()"><i class="mdi-action-note-add"></i></a></li>
-                <li><a href="@routes.Task.listTask"><i class="mdi-action-view-module"></i></a></li>
-            </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <li><a href="@routes.TaskController.index()"><i class="mdi-action-home"></i></a></li>
+                <li><a href="@routes.TaskController.newTaskPage()"><i class="mdi-action-note-add"></i></a></li>
+                <li><a href="@routes.TaskController.listTaskPage()"><i class="mdi-action-view-module"></i></a></li>
+            </ul>
+
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         </div>
     </div>
 </nav>

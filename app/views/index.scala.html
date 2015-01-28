@@ -10,49 +10,42 @@
                 <h5 class="header col s12 light">Simple Demo app for manager you daily tasks</h5>
             </div>
             <div class="row center">
-                <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+                <a href="@routes.TaskController.newTaskPage()" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
             </div>
             <br><br>
-
         </div>
     </div>
 
     <div class="container">
         <div class="section">
-            <!--   Icon Section   -->
             <div class="row">
-                <div class="col s12 m4">
+                <div class="col s6">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="mdi-image-flash-on"></i></h2>
-                        <h5 class="center">Speeds up development</h5>
-
-                        <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                        <h2 class="center light-blue-text"><i class="mdi-action-assignment"></i></h2>
+                        <h5 class="center">Create your TODOs</h5>
+                        <p class="light">
+                            You can use this system to create your own personal tasks.
+                            Add start and due dates, custom types ( you can add your own type),
+                            for each task you can add some related persons.
+                        </p>
                     </div>
                 </div>
 
-                <div class="col s12 m4">
+                <div class="col s6">
                     <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="mdi-social-group"></i></h2>
-                        <h5 class="center">User Experience Focused</h5>
-
-                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center light-blue-text"><i class="mdi-action-settings"></i></h2>
-                        <h5 class="center">Easy to work with</h5>
-
-                        <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                        <h2 class="center light-blue-text"><i class="mdi-action-done-all"></i></h2>
+                        <h5 class="center">Complete all your tasks</h5>
+                        <p class="light">
+                            How cool is that?
+                            Get more more organized and complete your responsibilities with this task manager.
+                            With custom types you can add from simple tasks like personal stuff (clean house, do groceries,...)
+                            or you can manage your work related tasks. Cool!
+                        </p>
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="section">
-
         </div>
     </div>
 }

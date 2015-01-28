@@ -1,4 +1,4 @@
-name := """play-java"""
+name := """demoApp"""
 
 version := "1.0-SNAPSHOT"
 
@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "com.google.inject" % "guice" % "4.0-beta"
 )

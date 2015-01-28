@@ -1,0 +1,81 @@
+@main("Task Management") {
+
+    <div class="container">
+        <br><br>
+        <h2 class="header center black-text">Add new task</h2>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <form action="@routes.TaskController.addTask()" method="post">
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <i class="mdi-action-label-outline prefix"></i>
+                            <input id="name" name="name" type="text" class="valid">
+                            <label for="name">Task Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-today prefix"></i>
+                            <input id="startDate" name="startDate" type="date" class="datepicker picker">
+                            <label for="startDate">Start date</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-action-event prefix"></i>
+                                <input id="dueDate" name="dueDate" type="date" class="datepicker">
+                                <label for="dueDate">Due Date</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="mdi-action-account-box prefix"></i>
+                            <label>Person</label>
+                            <select id="personId" name="personId">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="col s6">
+                                <i class="small mdi-social-personId-add"></i>
+                                <a href="#">Add new personId</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="mdi-action-listmdi-action-toc prefix"></i>
+                            <label>Task type</label>
+                            <select id="taskTypeId" name="taskTypeId">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="col s6">
+                                <i class="small mdi-av-playlist-add"></i>
+                                <a href="#">Add new task type</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row right-align">
+                    <button class="btn waves-effect waves-light" type="submit">Add
+                        <i class="mdi-content-send right"></i>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="section">
+        </div>
+    </div>
+}
