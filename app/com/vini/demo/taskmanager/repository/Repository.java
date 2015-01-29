@@ -11,6 +11,4 @@ public interface Repository<T> {
     void save(T object);
 
     void delete(T object);
-
-    void update(T object);
 }

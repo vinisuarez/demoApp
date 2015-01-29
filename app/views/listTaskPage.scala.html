@@ -1,5 +1,43 @@
 @(tasks: List[com.vini.demo.taskmanager.model.Task])
 
 @main("Task Management") {
+    <div class="container">
+        <table class="hoverable">
+            <thead>
+                <tr>
+                    <th data-field="name">Name</th>
+                    <th data-field="statDate">Start date</th>
+                    <th data-field="dueDate">Due Date</th>
+                    <th data-field="person">Person</th>
+                    <th data-field="taskType">Type</th>
+                    <th data-field="description">Description</th>
+                    <th data-field="isDone"></th>
+                </tr>
+            </thead>
 
+            <tbody>
+            @for(task <- tasks) {
+                <tr>
+                    <td>@task.getName</td>
+                    <td>@task.getStartDate</td>
+                    <td>@task.getDueDate</td>
+                    <td>@task.getPersonId</td>
+                    <td>@task.getTaskTypeId</td>
+                    <td>
+                        <a id="description" onclick="launchFlippedCard('@task.getDescription')">see</a>
+                    </td>
+
+                    <td>
+                        @if(task.isDone){
+                            <input type="checkbox" id="done@task.getId" checked="checked" onclick="toggleTaskDone('@task.getId')"/>
+                        } else {
+                            <input type="checkbox" id="done@task.getId" onclick="toggleTaskDone('@task.getId')"/>
+                        }
+                        <label for="done@task.getId">Done?</label>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 }

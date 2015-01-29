@@ -2,9 +2,8 @@
 
     <div class="container">
         <br><br>
-        <h2 class="header center black-text">Add new task</h2>
+        <h2 class="header center orange-text">Add new task</h2>
     </div>
-
     <div class="container">
         <div class="section">
             <div class="row">
@@ -44,14 +43,14 @@
                         </div>
                         <div>
                             <div class="col s6">
-                                <i class="small mdi-social-personId-add"></i>
-                                <a href="#">Add new personId</a>
+                                <i class="small mdi-social-person-add"></i>
+                                <a href="#">Add new person</a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
-                            <i class="mdi-action-listmdi-action-toc prefix"></i>
+                            <i class="mdi-action-toc prefix"></i>
                             <label>Task type</label>
                             <select id="taskTypeId" name="taskTypeId">
                                 <option value="" disabled selected>Choose your option</option>
@@ -67,6 +66,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" name="description"></textarea>
+                            <label>Description</label>
+                        </div>
+                    </div>
                     <div class="row right-align">
                     <button class="btn waves-effect waves-light" type="submit">Add
                         <i class="mdi-content-send right"></i>
@@ -74,8 +79,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="section">
         </div>
     </div>
 }

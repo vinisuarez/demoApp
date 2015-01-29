@@ -29,9 +29,4 @@ public class MemoryTaskTypeRepository implements Repository<TaskType> {
     public void delete(TaskType taskType) {
         taskType.delete();
     }
-
-    @Override
-    public void update(TaskType taskType) {
-        taskType.update(taskType.getId());
-    }
 }

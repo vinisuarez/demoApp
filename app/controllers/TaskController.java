@@ -5,6 +5,7 @@ import com.vini.demo.taskmanager.PersonService;
 import com.vini.demo.taskmanager.TaskService;
 import com.vini.demo.taskmanager.TaskTypeService;
 import com.vini.demo.taskmanager.model.Task;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -12,6 +13,7 @@ import play.mvc.Result;
 import views.html.*;
 
 import java.util.List;
+import java.util.Map;
 
 public class TaskController extends Controller {
 
@@ -37,11 +39,16 @@ public class TaskController extends Controller {
     }
 
     public Result addTask() {
-        Task task = Form.form(Task.class).bindFromRequest().get();
-        taskService.createNew(task);
+        Map requestData = Form.form().bindFromRequest().get().getData();
+        taskService.createNew(requestData);
         return listTaskPage();
     }
 
+    public Result markAsDone() {
+        Map requestData = Form.form().bindFromRequest().get().getData();
+        taskService.markAsDone(requestData);
+        return listTaskPage();
+    }
     public Result listTaskPage() {
         List<Task> allTasks = taskService.findAllTasks();
         return ok(listTaskPage.render(allTasks));

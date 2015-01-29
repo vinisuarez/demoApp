@@ -29,9 +29,4 @@ public class MemoryPersonRepository implements Repository<Person> {
     public void delete(Person person) {
         person.delete();
     }
-
-    @Override
-    public void update(Person person) {
-        person.update(person.getId());
-    }
 }

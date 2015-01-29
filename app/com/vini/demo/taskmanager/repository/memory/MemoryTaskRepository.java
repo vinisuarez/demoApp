@@ -29,9 +29,4 @@ public class MemoryTaskRepository implements Repository<Task> {
     public void delete(Task task) {
         task.delete();
     }
-
-    @Override
-    public void update(Task task) { task.update(task.id);
-
-    }
 }
