@@ -5,8 +5,8 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.vini.demo.taskmanager.PersonService;
 import com.vini.demo.taskmanager.model.Person;
-import com.vini.demo.taskmanager.repository.person.MemoryPersonRepository;
-import com.vini.demo.taskmanager.repository.person.PersonRepository;
+import com.vini.demo.taskmanager.repository.Repository;
+import com.vini.demo.taskmanager.repository.memory.MemoryPersonRepository;
 
 public class PersonModule extends AbstractModule{
     @Override
@@ -16,12 +16,12 @@ public class PersonModule extends AbstractModule{
 
     @Provides
     @Singleton
-    PersonRepository personRepository() {
+    Repository<Person> personRepository() {
         return new MemoryPersonRepository();
     }
 
     @Provides @Singleton
-    PersonService personService(PersonRepository personRepository) {
+    PersonService personService(Repository<Person> personRepository) {
         return new PersonService(personRepository);
     }
 }

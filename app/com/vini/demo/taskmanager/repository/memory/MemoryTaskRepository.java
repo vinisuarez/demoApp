@@ -1,11 +1,12 @@
-package com.vini.demo.taskmanager.repository.task;
+package com.vini.demo.taskmanager.repository.memory;
 
 import com.vini.demo.taskmanager.model.Task;
+import com.vini.demo.taskmanager.repository.Repository;
 import play.db.ebean.Model;
 
 import java.util.List;
 
-public class MemoryTaskRepository implements TaskRepository {
+public class MemoryTaskRepository implements Repository<Task> {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -27,5 +28,10 @@ public class MemoryTaskRepository implements TaskRepository {
     @Override
     public void delete(Task task) {
         task.delete();
+    }
+
+    @Override
+    public void update(Task task) { task.update(task.id);
+
     }
 }

@@ -4,8 +4,9 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.vini.demo.taskmanager.TaskTypeService;
-import com.vini.demo.taskmanager.repository.tasktype.MemoryTaskTypeRepository;
-import com.vini.demo.taskmanager.repository.tasktype.TaskTypeRepository;
+import com.vini.demo.taskmanager.model.TaskType;
+import com.vini.demo.taskmanager.repository.Repository;
+import com.vini.demo.taskmanager.repository.memory.MemoryTaskTypeRepository;
 
 public class TaskTypeModule extends AbstractModule {
     @Override
@@ -15,12 +16,12 @@ public class TaskTypeModule extends AbstractModule {
 
     @Provides
     @Singleton
-    TaskTypeRepository taskTypeRepository() {
+    Repository<TaskType> taskTypeRepository() {
         return new MemoryTaskTypeRepository();
     }
 
     @Provides @Singleton
-    TaskTypeService taskTypeService(TaskTypeRepository taskTypeRepository) {
+    TaskTypeService taskTypeService(Repository<TaskType> taskTypeRepository) {
         return new TaskTypeService(taskTypeRepository);
     }
 }

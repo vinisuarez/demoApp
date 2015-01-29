@@ -2,7 +2,7 @@ package com.vini.demo.taskmanager;
 
 import com.google.common.collect.Lists;
 import com.vini.demo.taskmanager.model.Person;
-import com.vini.demo.taskmanager.repository.person.PersonRepository;
+import com.vini.demo.taskmanager.repository.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,9 +11,9 @@ import java.util.List;
 public class PersonService {
     private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
 
-    private final PersonRepository personRepository;
+    private final Repository<Person> personRepository;
 
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(Repository personRepository) {
         this.personRepository = personRepository;
     }
 

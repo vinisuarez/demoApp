@@ -2,7 +2,7 @@ package com.vini.demo.taskmanager;
 
 import com.google.common.collect.Lists;
 import com.vini.demo.taskmanager.model.Task;
-import com.vini.demo.taskmanager.repository.task.TaskRepository;
+import com.vini.demo.taskmanager.repository.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,9 +12,9 @@ public class TaskService {
 
     private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
 
-    private final TaskRepository taskRepository;
+    private final Repository<Task> taskRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(Repository<Task> taskRepository) {
         this.taskRepository = taskRepository;
     }
 
@@ -24,8 +24,8 @@ public class TaskService {
     }
 
     public Task findTaskById(String id) {
-        Task person = taskRepository.findById(id);
-        return person;
+        Task task = taskRepository.findById(id);
+        return task;
     }
 
     public void createNew(Task task) {

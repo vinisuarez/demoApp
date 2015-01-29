@@ -2,7 +2,7 @@ package com.vini.demo.taskmanager;
 
 import com.google.common.collect.Lists;
 import com.vini.demo.taskmanager.model.TaskType;
-import com.vini.demo.taskmanager.repository.tasktype.TaskTypeRepository;
+import com.vini.demo.taskmanager.repository.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,9 +11,9 @@ import java.util.List;
 public class TaskTypeService {
     private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
 
-    private final TaskTypeRepository taskTypeRepository;
+    private final Repository<TaskType> taskTypeRepository;
 
-    public TaskTypeService(TaskTypeRepository taskTypeRepository) {
+    public TaskTypeService(Repository<TaskType> taskTypeRepository) {
         this.taskTypeRepository = taskTypeRepository;
     }
 

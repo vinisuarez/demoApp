@@ -18,4 +18,8 @@ public class Person extends Model{
     public String getName() {
         return name;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

@@ -27,6 +27,10 @@ public class Task extends Model {
     @Constraints.Required
     public String description;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
