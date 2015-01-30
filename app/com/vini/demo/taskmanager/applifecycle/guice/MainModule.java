@@ -8,6 +8,5 @@ public class MainModule extends AbstractModule {
     protected void configure() {
         install(new TaskModule());
         install(new TaskTypeModule());
-        install(new PersonModule());
     }
 }

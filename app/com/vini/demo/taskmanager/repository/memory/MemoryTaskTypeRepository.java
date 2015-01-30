@@ -16,7 +16,7 @@ public class MemoryTaskTypeRepository implements Repository<TaskType> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public TaskType findById(String id) {
+    public TaskType findById(Long id) {
         return (TaskType) new Model.Finder(String.class, TaskType.class).byId(id);
     }
 

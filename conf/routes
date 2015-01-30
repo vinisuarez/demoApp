@@ -3,11 +3,17 @@
 # ~~~~
 
 # Home page
-GET        /                    @controllers.TaskController.index()
-GET        /add                 @controllers.TaskController.newTaskPage()
-GET        /list                @controllers.TaskController.listTaskPage()
+GET         /                       @controllers.TaskController.index
+GET         /task                   @controllers.TaskController.index
+GET         /task/add               @controllers.TaskController.newTaskPage
+GET         /task/delete            @controllers.TaskController.remove(id: Long)
+GET         /task/list              @controllers.TaskController.listPage
 
-POST       /add                 @controllers.TaskController.addTask()
-POST       /markAsDone          @controllers.TaskController.markAsDone()
+GET         /taskType               @controllers.TaskTypeController.index
+GET         /taskType/delete        @controllers.TaskTypeController.remove(id: Long)
+
+POST        /task/add               @controllers.TaskController.add
+POST        /task/toggleDone        @controllers.TaskController.toggleDone
+POST        /taskType/add           @controllers.TaskTypeController.addTaskType
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)

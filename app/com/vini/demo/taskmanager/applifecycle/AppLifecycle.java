@@ -3,6 +3,8 @@ package com.vini.demo.taskmanager.applifecycle;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.vini.demo.taskmanager.applifecycle.guice.MainModule;
+import com.vini.demo.taskmanager.util.RequestConverter;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +16,7 @@ public class AppLifecycle {
 
     public void onStart() {
         setupInjections();
+        ConvertUtils.register(new RequestConverter(), String.class);
     }
 
     private void setupInjections() {

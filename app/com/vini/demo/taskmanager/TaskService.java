@@ -7,8 +7,6 @@ import com.vini.demo.taskmanager.util.TaskRequestUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +25,7 @@ public class TaskService {
         return Lists.newArrayList(taskRepository.findAll());
     }
 
-    public Task findTaskById(String id) {
+    public Task findTaskById(Long id) {
         Task task = taskRepository.findById(id);
         return task;
     }
@@ -38,16 +36,17 @@ public class TaskService {
         taskRepository.save(task);
     }
 
-    public void markAsDone(Map requestData) {
-        String taskId = TaskRequestUtil.adaptMarkAsDone(requestData);
-        Task task = findTaskById(taskId);
+    public void toggleDone(Map requestData) {
+        String taskId = TaskRequestUtil.getTaskIdFromRequest(requestData);
+        Task task = findTaskById(Long.parseLong(taskId));
         task.setDone(!task.isDone());
 
         LOG.debug("Task {} was marked as done = {}", task.getName(), task.isDone());
         taskRepository.save(task);
     }
 
-    public void exclude(Task task) {
+    public void exclude(Long taskId) {
+        Task task = findTaskById(taskId);
         LOG.debug("Task {} will be excluded", task.getName());
         taskRepository.delete(task);
     }

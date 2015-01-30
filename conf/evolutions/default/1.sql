@@ -3,18 +3,11 @@
 
 # --- !Ups
 
-create table person (
-  id                        bigint not null,
-  name                      varchar(255),
-  constraint pk_person primary key (id))
-;
-
 create table task (
   id                        bigint not null,
   name                      varchar(255),
   start_date                varchar(255),
   due_date                  varchar(255),
-  person_id                 varchar(255),
   task_type_id              varchar(255),
   description               varchar(255),
   is_done                   boolean,
@@ -27,8 +20,6 @@ create table task_type (
   constraint pk_task_type primary key (id))
 ;
 
-create sequence person_seq;
-
 create sequence task_seq;
 
 create sequence task_type_seq;
@@ -40,15 +31,11 @@ create sequence task_type_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists person;
-
 drop table if exists task;
 
 drop table if exists task_type;
 
 SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists person_seq;
 
 drop sequence if exists task_seq;
 

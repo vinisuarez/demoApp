@@ -6,7 +6,7 @@ public interface Repository<T> {
 
     List<T> findAll();
 
-    T findById(String id);
+    T findById(Long id);
 
     void save(T object);
 

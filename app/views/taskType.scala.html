@@ -1,0 +1,60 @@
+@(taskTypes: List[com.vini.demo.taskmanager.model.TaskType])
+
+@main("Task Management") {
+    <div class="container">
+        <br><br>
+        <h2 class="header center orange-text">Task types</h2>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <form action="@routes.TaskTypeController.addTaskType()" method="post">
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li>
+                            <div class="collapsible-header"><h5 class="header black-text">Add new</h5></div>
+                            <div class="collapsible-body">
+                                <div class="input-field col s8">
+                                    <i class="mdi-action-label-outline prefix"></i>
+                                    <input id="name" name="name" type="text" class="valid">
+                                    <label for="name">Task type</label>
+                                </div>
+                                <div class="row right-align">
+                                    <button class="btn waves-effect waves-light" type="submit">Add
+                                        <i class="mdi-content-send right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    @if(!taskTypes.isEmpty) {
+        <div class="container">
+            <table class="hoverable">
+                <thead>
+                    <tr>
+                        <th data-field="name">Name</th>
+                        <th data-field="delete">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for(taskType <- taskTypes) {
+                    <tr>
+                        <td>@taskType.getName</td>
+                        <td>
+                            <a href="@routes.TaskTypeController.remove(taskType.getId)" class="mdi-action-delete"></a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else {
+        <div class="container">
+            <br><br>
+            <h2 class="header center black-text">No tasks types</h2>
+        </div>
+    }
+}

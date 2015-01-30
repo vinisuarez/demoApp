@@ -2,42 +2,60 @@
 
 @main("Task Management") {
     <div class="container">
-        <table class="hoverable">
-            <thead>
-                <tr>
-                    <th data-field="name">Name</th>
-                    <th data-field="statDate">Start date</th>
-                    <th data-field="dueDate">Due Date</th>
-                    <th data-field="person">Person</th>
-                    <th data-field="taskType">Type</th>
-                    <th data-field="description">Description</th>
-                    <th data-field="isDone"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-            @for(task <- tasks) {
-                <tr>
-                    <td>@task.getName</td>
-                    <td>@task.getStartDate</td>
-                    <td>@task.getDueDate</td>
-                    <td>@task.getPersonId</td>
-                    <td>@task.getTaskTypeId</td>
-                    <td>
-                        <a id="description" onclick="launchFlippedCard('@task.getDescription')">see</a>
-                    </td>
-
-                    <td>
-                        @if(task.isDone){
-                            <input type="checkbox" id="done@task.getId" checked="checked" onclick="toggleTaskDone('@task.getId')"/>
-                        } else {
-                            <input type="checkbox" id="done@task.getId" onclick="toggleTaskDone('@task.getId')"/>
-                        }
-                        <label for="done@task.getId">Done?</label>
-                    </td>
-                </tr>
-            }
-            </tbody>
-        </table>
+        <br><br>
+        <h2 class="header center orange-text">Yours tasks</h2>
     </div>
+    @if(!tasks.isEmpty) {
+        <div class="container">
+            <table class="hoverable">
+                <thead>
+                    <tr>
+                        <th data-field="name">Name</th>
+                        <th data-field="statDate">Start date</th>
+                        <th data-field="dueDate">Due Date</th>
+                        <th data-field="taskType">Type</th>
+                        <th data-field="description">Description</th>
+                        <th data-field="isDone">Done</th>
+                        <th data-field="delete">Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                @for(task <- tasks) {
+                    <tr>
+                        <td>@task.getName</td>
+                        <td>@task.getStartDate</td>
+                        <td>@task.getDueDate</td>
+                        <td>
+                            @task.getTaskTypeId
+                        </td>
+                        <td>
+                            <a id="description" onclick="launchFlippedCard('@task.getDescription')">see</a>
+                        </td>
+
+                        <td>
+                            @if(task.isDone){
+                                <input type="checkbox" id="done@task.getId" checked="checked" onclick="toggleTaskDone('@task.getId')"/>
+                            } else {
+                                <input type="checkbox" id="done@task.getId" onclick="toggleTaskDone('@task.getId')"/>
+                            }
+                            <label for="done@task.getId"> </label>
+                        </td>
+                        <td>
+                            <a href="@routes.TaskController.remove(task.getId)" class="Large mdi-action-delete"></a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    } else {
+        <div class="container">
+            <br><br>
+            <h2  class="header center black-text">No tasks, add new:</h2>
+            <div class="row center">
+                <a href="@routes.TaskController.newTaskPage()" id="button" class="btn-large waves-effect waves-light orange">Get Started</a>
+            </div>
+        </div>
+    }
 }

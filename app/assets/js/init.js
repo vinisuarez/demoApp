@@ -2,6 +2,9 @@ $(document).ready(function(){
     $(".button-collapse").sideNav();
     $('.datepicker').pickadate();
     $('select').material_select();
+    $('.collapsible').collapsible({
+        accordion : false
+    });
 });
 
 function launchFlippedCard(desc){
@@ -26,6 +29,6 @@ function toggleTaskDone(taskId) {
     var XHR = new XMLHttpRequest();
     var FD  = new FormData();
     FD.append("id", taskId);
-    XHR.open('POST', '/markAsDone');
+    XHR.open('POST', '/task/toggleDone');
     XHR.send(FD);
 }

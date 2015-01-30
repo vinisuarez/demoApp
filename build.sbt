@@ -11,5 +11,6 @@ libraryDependencies ++= Seq(
   javaEbean,
   cache,
   javaWs,
-  "com.google.inject" % "guice" % "4.0-beta"
+  "com.google.inject" % "guice" % "4.0-beta",
+  "commons-beanutils" % "commons-beanutils" % "1.9.2"
 )
