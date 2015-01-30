@@ -17,6 +17,19 @@ public class Task extends Model {
     private String description;
     private boolean isDone;
 
+    public Task() {
+    }
+
+    public Task(Long id, String name, String startDate, String dueDate, String taskTypeId, String description, boolean isDone) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+        this.taskTypeId = taskTypeId;
+        this.description = description;
+        this.isDone = isDone;
+    }
+
     public Long getId() {
         return id;
     }

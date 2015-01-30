@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="input-field col s8">
                             <i class="mdi-action-label-outline prefix"></i>
-                            <input id="name" name="name" type="text" class="valid">
+                            <input id="name" name="name" type="text" class="valid" maxlength="30">
                             <label for="name">Task Name</label>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <i class="mdi-action-toc prefix"></i>
                             <label>Task type</label>
                             <select id="taskTypeId" name="taskTypeId">
-                                <option value="" disabled selected>Choose your option</option>
+                                <option disabled selected>Choose your option</option>
                                 @for(taskType <- taskTypes) {
                                     <option value="@taskType.getId">@taskType.getName</option>
                                 }

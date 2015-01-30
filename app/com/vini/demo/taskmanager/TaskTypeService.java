@@ -7,6 +7,7 @@ import com.vini.demo.taskmanager.util.TaskTypeRequestUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -19,14 +20,15 @@ public class TaskTypeService {
         this.taskTypeRepository = taskTypeRepository;
     }
 
-    public List<TaskType> findAllTaskTypes() {
-        LOG.debug("Listing all tasks types");
-        return Lists.newArrayList(taskTypeRepository.findAll());
+    public List<TaskType> getAllTaskTypesSortedByName() {
+        List<TaskType> taskTypes = taskTypeRepository.findAll();
+        Collections.sort(taskTypes, (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        LOG.debug("Listing all tasks types sorted by name");
+        return Lists.newArrayList(taskTypes);
     }
 
     public TaskType findTaskTypeById(Long id) {
-        TaskType taskType = taskTypeRepository.findById(id);
-        return taskType;
+        return taskTypeRepository.findById(id);
     }
 
     public void createNew(Map requestData) {

@@ -15,7 +15,7 @@
                             <div class="collapsible-body">
                                 <div class="input-field col s8">
                                     <i class="mdi-action-label-outline prefix"></i>
-                                    <input id="name" name="name" type="text" class="valid">
+                                    <input id="name" name="name" type="text" class="valid" maxlength="50">
                                     <label for="name">Task type</label>
                                 </div>
                                 <div class="row right-align">
@@ -31,7 +31,7 @@
         </div>
     </div>
     @if(!taskTypes.isEmpty) {
-        <div class="container">
+        <div class="container long-container">
             <table class="hoverable">
                 <thead>
                     <tr>
@@ -52,7 +52,7 @@
             </table>
         </div>
     } else {
-        <div class="container">
+        <div class="container long-container">
             <br><br>
             <h2 class="header center black-text">No tasks types</h2>
         </div>

@@ -2,6 +2,8 @@ $(document).ready(function(){
     $(".button-collapse").sideNav();
     $('.datepicker').pickadate();
     $('select').material_select();
+    $('#taskList').tablesorter({
+        headers:{ 4: {sorter: false},5: {sorter:false}, 6: {sorter:false}}});
     $('.collapsible').collapsible({
         accordion : false
     });

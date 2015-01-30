@@ -1,3 +1,6 @@
 .icon-block {
   padding: 0 15px;
 }
+.long-container {
+    min-height: 600px;
+}

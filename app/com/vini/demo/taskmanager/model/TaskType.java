@@ -10,10 +10,26 @@ import javax.persistence.Id;
 public class TaskType extends Model {
 
     @Id
-    public Long id;
+    private Long id;
 
     @Constraints.Required
-    public String name;
+    private String name;
+
+    public TaskType() {
+    }
+
+    public TaskType(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

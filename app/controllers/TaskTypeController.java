@@ -8,7 +8,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.taskType;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -21,15 +20,14 @@ public class TaskTypeController extends Controller {
     }
 
     public Result index(){
-        List<TaskType> allTaskTypes = taskTypeService.findAllTaskTypes();
-        Collections.sort(allTaskTypes, (a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        List<TaskType> allTaskTypes = taskTypeService.getAllTaskTypesSortedByName();
         return ok(taskType.render(allTaskTypes));
     }
 
     public Result addTaskType() {
         Map requestData = Form.form().bindFromRequest().get().getData();
         taskTypeService.createNew(requestData);
-        return index();
+        return redirect("/taskType");
     }
 
     public Result remove(Long id){

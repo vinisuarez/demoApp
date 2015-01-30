@@ -1,19 +1,19 @@
-@(tasks: List[com.vini.demo.taskmanager.model.Task])
+@(tasks: List[com.vini.demo.taskmanager.model.Task], taskTypes: List[com.vini.demo.taskmanager.model.TaskType])
 
 @main("Task Management") {
-    <div class="container">
+    <div class="container" >
         <br><br>
         <h2 class="header center orange-text">Yours tasks</h2>
     </div>
     @if(!tasks.isEmpty) {
-        <div class="container">
-            <table class="hoverable">
+        <div class="container long-container">
+            <table id="taskList" class="hoverable tablesorter">
                 <thead>
                     <tr>
-                        <th data-field="name">Name</th>
-                        <th data-field="statDate">Start date</th>
-                        <th data-field="dueDate">Due Date</th>
-                        <th data-field="taskType">Type</th>
+                        <th data-field="name" style="cursor: pointer">Name</th>
+                        <th data-field="statDate" style="cursor: pointer">Start date</th>
+                        <th data-field="dueDate" style="cursor: pointer">Due Date</th>
+                        <th data-field="taskType" style="cursor: pointer">Type</th>
                         <th data-field="description">Description</th>
                         <th data-field="isDone">Done</th>
                         <th data-field="delete">Delete</th>
@@ -27,7 +27,13 @@
                         <td>@task.getStartDate</td>
                         <td>@task.getDueDate</td>
                         <td>
-                            @task.getTaskTypeId
+                            @if(task.getTaskTypeId != null) {
+                                @for(value <- taskTypes) {
+                                    @if(value.getId == task.getTaskTypeId.toLong) {
+                                        @value.getName
+                                    }
+                                }
+                            }
                         </td>
                         <td>
                             <a id="description" onclick="launchFlippedCard('@task.getDescription')">see</a>
@@ -50,7 +56,7 @@
             </table>
         </div>
     } else {
-        <div class="container">
+        <div class="container long-container">
             <br><br>
             <h2  class="header center black-text">No tasks, add new:</h2>
             <div class="row center">

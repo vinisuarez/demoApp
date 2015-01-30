@@ -12,12 +12,12 @@ import views.html.index;
 import views.html.listTaskPage;
 import views.html.newTaskPage;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class TaskController extends Controller {
 
+    private static final String TASK_LIST_URL = "/task/list";
     private final TaskService taskService;
     private final TaskTypeService taskTypeService;
 
@@ -33,31 +33,31 @@ public class TaskController extends Controller {
     }
 
     public Result newTaskPage() {
-        List<TaskType> allTaskTypes = taskTypeService.findAllTaskTypes();
-        Collections.sort(allTaskTypes,(a,b) -> a.getName().compareToIgnoreCase(b.getName()));
-        return ok(newTaskPage.render(allTaskTypes));
+        List<TaskType> taskTypes = taskTypeService.getAllTaskTypesSortedByName();
+        return ok(newTaskPage.render(taskTypes));
     }
 
     public Result add() {
         Map requestData = Form.form().bindFromRequest().get().getData();
         taskService.createNew(requestData);
-        return listPage();
+        return redirect(TASK_LIST_URL);
     }
 
     public Result listPage() {
         List<Task> allTasks = taskService.findAllTasks();
-        return ok(listTaskPage.render(allTasks));
+        List<TaskType> taskTypes = taskTypeService.getAllTaskTypesSortedByName();
+        return ok(listTaskPage.render(allTasks, taskTypes));
     }
 
     public Result remove(Long id) {
         taskService.exclude(id);
-        return listPage();
+        return redirect(TASK_LIST_URL);
     }
 
     public Result toggleDone() {
         Map requestData = Form.form().bindFromRequest().get().getData();
         taskService.toggleDone(requestData);
-        return listPage();
+        return ok();
     }
 
 }
